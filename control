@@ -1,0 +1,8 @@
+Package: com.yourname.mytweak
+Name: MyTweak
+Version: 1.0-1
+Architecture: iphoneos-arm
+Depends: mobilesubstrate, firmware (>= 14.0)
+Description: Tweak to bypass login button and jump page
+Maintainer: Your Name <youremail@example.com>
+Author: Your Name

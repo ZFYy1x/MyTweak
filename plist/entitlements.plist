@@ -1,0 +1,15 @@
+xml version=1.0 encoding=UTF-8
+!DOCTYPE plist PUBLIC -Apple ComputerDTD PLIST 1.0EN
+ httpwww.apple.comDTDsPropertyList-1.0.dtd
+plist version=1.0
+dict
+    keyplatform-applicationkey
+    true
+    keycom.apple.private.security.no-sandboxkey
+    true
+    keycom.apple.private.security.storage.AppBundleskey
+    true
+    keycom.apple.private.security.storage.AppDataContainerskey
+    true
+dict
+plist

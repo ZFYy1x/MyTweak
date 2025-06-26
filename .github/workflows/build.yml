@@ -1,0 +1,36 @@
+name: Build Tweak
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest  # macOS runner，默认自带clang
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # 安装 Theos
+    - name: Install Theos
+      run: |
+        git clone --depth=1 https://github.com/theos/theos.git $HOME/theos
+        echo "export THEOS=$HOME/theos" >> $GITHUB_ENV
+        echo "$HOME/theos/bin" >> $PATH
+        export PATH=$PATH:$HOME/theos/bin
+
+    # 编译 tweak
+    - name: Build tweak
+      env:
+        THEOS: ${{ env.THEOS }}
+        PATH: ${{ env.PATH }}
+      run: |
+        make package THEOS_PACKAGE_SCHEME=roothide
+
+    # 上传编译产物
+    - name: Upload deb package
+      uses: actions/upload-artifact@v3
+      with:
+        name: tweak-deb
+        path: ./packages/*.deb
